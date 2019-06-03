@@ -1,0 +1,58 @@
+{% extends 'shop/readall.html' %}
+{% block title %}도서 상세보기{% endblock %}
+{% load static %}
+{% block script %}
+<script type="text/javascript">
+    $(function() {
+        $("#list").click(function(){
+            location.href = "/shop/readall";
+        }); // list
+        $("#update").click(function(){
+            location.href = "/shop/update/{{book.id}}";
+        }); // list
+        $("#delete").click(function(){
+            var answer = confirm("정말 삭제하시겠습니까?");
+            if (answer) {
+                alert("도서 정보가 삭제되었습니다.");
+                location.href = "/shop/delete/{{book.id}}";
+            }
+            else {
+                false;
+            } // else
+        }); // list
+    }); // function
+</script>
+{% endblock %}
+{% block div %}
+<br>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td bgcolor="white" rowspan="5" align="center" width="100"><img height="200" src="/static/shop/img/{{book.img_url}}"></td>
+            <td>도서명</td>
+            <td>{{book.title}}</td>
+        </tr>
+        <tr>
+            <td>저자</td>
+            <td>{{book.author}}</td>
+        </tr>
+        <tr>
+            <td>출판일</td>
+            <td>{{book.pub_date}}</td>
+        </tr>
+        <tr>
+            <td>DB등록일</td>
+            <td>{{reg_date}}</td>
+        </tr>
+        <tr>
+            <td>가격</td>
+            <td>{{book.price}}</td>
+        </tr>
+    </table>
+    <button class="btn btn-success" id ='list'>목록</button>
+    <button class="btn btn-primary float-right" id = 'update'>수정</button>
+    <button class="btn btn-danger float-right" id = 'delete'>삭제</button>
+</div>
+{% endblock %}
+</body>
+</html>

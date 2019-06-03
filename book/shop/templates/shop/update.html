@@ -1,0 +1,33 @@
+{% extends 'shop/readall.html' %}
+{% block title %}도서 정보 수정{% endblock %}
+{% load static %}
+{% block script %}{% endblock %}
+{% block div %}
+<br>
+<div class="container">
+    <div class="jumbotron">
+        <form action="/shop/updateAction/{{id}}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+            <input type="text" class="form-control" name="title" placeholder="도서명" autofocus="autofocus" maxlength="30" value="{{book.title}}">
+            </div>
+            <div class="form-group">
+            <input type="text" class="form-control" name="author" placeholder="저자" autofocus="autofocus" maxlength="30" value="{{book.author}}">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="pub_date" placeholder="출판일" value="{{book.pub_date}}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="price" placeholder="가격" maxlength="10" value="{{book.price}}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="img_url" placeholder="표지이미지 파일명"  maxlength="100" value="{{book.img_url}}">
+            </div>
+            <a href="/shop/readall" class="btn btn-success">목록</a>
+            <input type="submit" class="btn btn-primary float-right" value="수정">
+        </form>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

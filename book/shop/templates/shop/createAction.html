@@ -1,0 +1,35 @@
+{% extends 'shop/readall.html' %}
+{% block title %}도서 등록 확인{% endblock %}
+{% load static %}
+{% block script %}{% endblock %}
+{% block div %}
+<br>
+<div class="container">
+    <table class="table table-striped">
+        <tr>
+            <td bgcolor="white" rowspan="5">이미지</td>
+            <td>도서명</td>
+            <td>{{title}}</td>
+        </tr>
+        <tr>
+            <td>저자</td>
+            <td>{{author}}</td>
+        </tr>
+        <tr>
+            <td>출판일</td>
+            <td>{{pub_date}}</td>
+        </tr>
+        <tr>
+            <td>DB등록일</td>
+            <td>{{reg_date}}</td>
+        </tr>
+        <tr>
+            <td>가격</td>
+            <td>{{price}}</td>
+        </tr>
+    </table>
+    <a href="/shop/readall" class="btn btn-success">목록</a>
+</div>
+{% endblock %}
+</body>
+</html>
