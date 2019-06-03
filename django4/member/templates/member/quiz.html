@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DB 검색 결과 화면</title>
+</head>
+<body>
+DB 검색 결과 화면........<br>
+{{quiz_list}}
+<hr color = red>
+{% if quiz_list%}
+    <ul>
+        {% for question in quiz_list %}
+            <li>{{question}}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    no data....
+{% endif %}
+</body>
+</html>

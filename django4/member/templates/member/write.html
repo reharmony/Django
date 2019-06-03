@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 부트스트랩 테스트</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'member/css/bootstrap.min.css '%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<br>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead class="thead thead-dark">
+            <th style="text-align: center;">
+                게시글 작성하기
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" class="form-control" placeholder="글 제목"> </td>
+            </tr>
+            <tr>
+                <td><textarea class="form-control" maxlength="2048" style="height: 350px" placeholder="글 내용"></textarea> </td>
+            </tr>
+        </tbody>
+    </table>
+            <a href="bbs" class="btn btn-primary">목록</a>
+            <input type="submit" class="btn btn-danger" value="삭제">
+            <input type="submit" class="btn btn-success float-right" value="글쓰기">
+    </div>
+</div>
+</body>
+</html>
