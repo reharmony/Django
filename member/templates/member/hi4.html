@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hi4</title>
+    {% load static %} <!-- static기능 import하기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'member/style.css' %}"> <!-- css import -->
+</head>
+<body>
+<!-- {% : 템플릿언어, html에 python문법을 삽입하는 부호 (모든 문법이 가능한건 아님, 제어문 위주로 가능) -->
+<img src="{% static 'member/images/3.jpg' %}" width="200"><br>
+<h3>배송주소</h3> <br>
+{{post.address}}
+</body>
+</html>

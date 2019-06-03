@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hi2</title>
+    {% load static %} <!-- static기능 import하기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'member/style.css' %}"> <!-- css import -->
+</head>
+<body>
+<!-- {% : 템플릿언어, html에 python문법을 삽입하는 부호 (모든 문법이 가능한건 아님, 제어문 위주로 가능) -->
+<img src="{% static 'member/images/2.jpg' %}" width="200"><br>
+제품의 이름은 {{product}}<br>
+제품의 가격은 {{price}}원<br>
+<br>
+<form action="hi3" method="post">
+    구매하고자 하는 제품의 회사는<br>
+    {% csrf_token %} <!-- 보안 토큰 : 안 넣으면 403 에러 발생 -->
+    <input type="text" name="company"><br>
+    <input type="text" name="count"><br>
+    <input type="submit" value="서버로 전송">
+</form>
+
+
+</body>
+</html>
