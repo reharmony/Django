@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Read All</title>
+</head>
+<body>
+<ul>
+    <li>cnt, id, 이름, 연락처, 주소</li>
+</ul>
+{% for test in test_list %}
+    <ul>
+        <li>{{forloop.counter}},
+            {{test.id}},
+            {{test.name}},
+            {{test.tel}},
+            {{test.addr}}
+            <a href="/member/update/{{test.id}}">[수정]</a>
+            <a href="/member/delete/{{test.id}}">[삭제]</a>
+        </li>
+    </ul>
+{% endfor %}
+</body>

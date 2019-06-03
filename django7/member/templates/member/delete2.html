@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Read</title>
+</head>
+<body>
+<h1>{{object.name}}님의 정보입니다.</h1>
+<table border="1" bordercolor="red">
+    <tr align="center">
+        <th width="100" bgcolor="yellow">번호</th>
+        <th width="100" bgcolor="yellow">이름</th>
+        <th width="100" bgcolor="yellow">연락처</th>
+        <th width="200" bgcolor="yellow">주소</th>
+    </tr>
+    <tr align="center">
+        <td>{{object.id}}</td>
+        <td>{{object.name}}</td>
+        <td>{{object.tel}}</td>
+        <td>{{object.addr}}</td>
+    </tr>
+    <tr>
+        <td align="right" colspan="4"><input type="submit" value="삭제"></td>
+    </tr>
+</table>
+</body>
+</html>

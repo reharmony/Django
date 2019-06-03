@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list2</title>
+</head>
+<body>
+<ul>
+    {% for test1 in test_list %}
+    <li><a href="https://search.naver.com/search.naver?ie=UTF-8&query={{test1.addr}}">{{test1.name}}</a> </li>
+    {% endfor %}
+</ul>
+</body>
+</html>

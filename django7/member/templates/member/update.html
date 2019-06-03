@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <!-- {{form.as_p}} --> <!-- 형태1: p태그 --> <!-- 3가지 형태중에서 선택 -->
+    <!-- {{form.as_table}} --> <!-- 형태2: table태그 -->
+    {{form.as_ul}} <!-- 형태3: ul태그 -->
+    <input type="submit" value="정보수정">
+</form>
+</body>
+</html>

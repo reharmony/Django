@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+</head>
+<body>
+<ul>
+    {% for test1 in question_list %}
+    <li> {{forloop.counter}}, <a href="/member/{{test1.addr}}">{{test1.question_text}}</a>, {{test1}}, {{test1.pub_date}}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
