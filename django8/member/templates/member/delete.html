@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>글 삭제하기</title>
+</head>
+<body>
+<h2> 정말 삭제하시겠습니까? </h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="삭제">
+</form>
+<a href="/member/readall">취소</a>
+</body>
+</html>
