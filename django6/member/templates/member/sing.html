@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}회사소개{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'member/style2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'member/css/bootstrap.css' %}">
+    <script src="{% static 'member/jquery-3.4.1.min.js' %}"></script> <!-- 제이쿼리 import-->
+    {% block script %}{% endblock %}
+</head>
+<body>
+<center>
+<h1>싱싱 주식회사</h1>
+    {% block menu %}
+        <a href="sing"><span style="background-color:yellow">회사소개</span> |</a>
+        <a href="sing1">회사제품 |</a>
+        <a href="sing2">오시는길 |</a>
+        <a href="sing3">문의게시판</a>
+    {% endblock %}
+
+<hr color="blue" width="500">
+    <img {% block img %} src="{% static 'member/images/singlogo.png' %}" {% endblock %}>
+    {% block text %}{% endblock %}
+<hr color="red" width="500">
+<p>
+    싱싱주식회사<br>
+    주소: 서울시 강남구 강남대로<br>
+    연락처: 02)456-7890<br>
+    이메일: admin@singsing.co.kr<br>
+</p>
+</center>
+</body>
+</html>

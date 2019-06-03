@@ -1,0 +1,54 @@
+{% extends 'member/sing.html' %} <!-- base.html파일에서 확장(상속)시켜주기 -->
+{% load static %}
+{% block script %}
+    <script type="text/javascript">
+        $(function() {
+            $("#list").click(function() {
+                location.href = "/member/sing3";
+            });
+        });
+    </script>
+{% endblock %}
+{% block title %}오시는길{% endblock %}
+{% block menu %}
+    <a href="sing">회사소개</span> |</a>
+    <a href="sing1">회사제품 |</a>
+    <a href="sing2">오시는길 |</a>
+    <a href="sing3"><span style="background-color:yellow">문의게시판</a>
+{% endblock %}
+<img {% block img %} src="{% static 'member/images/0.png' %}" {% endblock %}>
+{% block text %}
+<div class="container">
+<form action="sing5" method="post" id="form">
+    {% csrf_token %}
+    <table class="table table-striped" id="board">
+        <tr>
+            <td>제목</td>
+            <td align="left"><input type="text" id="title" name="title" size="55"></td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td align="left"><input type="text" id="name" name="name" size="55"></td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td align="left"><textarea id="content" name="content" maxlength="2048" cols="60%" rows="20"></textarea></td>
+        </tr>
+    </table>
+    <table width="500">
+    <tr>
+        <td align="right">
+            <input class="btn btn-primary" type="submit" value="작성" id="writing" name="writing">
+        </td>
+    </tr>
+    </table>
+</form>
+<table>
+    <tr>
+        <td align="left">
+            <button class="btn btn-success" id="list">목록</button>
+        </td>
+    </tr>
+</table>
+</div>
+{% endblock %}

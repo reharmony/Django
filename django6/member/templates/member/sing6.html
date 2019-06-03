@@ -1,0 +1,65 @@
+{% extends 'member/sing.html' %} <!-- base.html파일에서 확장(상속)시켜주기 -->
+{% load static %}
+{% block script %}
+<script type="text/javascript">
+        $(function() {
+            $("#list").click(function() {
+                location.href = "/member/sing3";
+            });
+            $("#delete").click(function() {
+                var answer = confirm("정말 삭제하시겠습니까?") // 확인/취소 창
+                if (answer) {
+                    alert("게시물이 삭제되었습니다.");
+                    location.href = "/member/sing7/{{id}}";
+                    } // if
+                else {
+                    false
+                } // else
+            }); //delete
+            $("#update").click(function() {
+                location.href = "/member/sing8/{{id}}";
+            }); // update
+        }); // function
+    </script>
+{% endblock %}
+{% block title %}오시는길{% endblock %}
+{% block menu %}
+    <a href="/member/sing">회사소개</span> |</a>
+    <a href="/member/sing1">회사제품 |</a>
+    <a href="/member/sing2">오시는길 |</a>
+    <a href="/member/sing3"><span style="background-color:yellow">문의게시판</a>
+{% endblock %}
+<img {% block img %} src="{% static 'member/images/0.png' %}" {% endblock %}>
+{% block text %}
+<div class="container">
+<table class="table table-striped" width="100%">
+    <tr>
+        <td>제목</td><td>{{title}}</td>
+    </tr>
+    <tr>
+        <td>작성자</td><td>{{name}}</td>
+    </tr>
+    <tr>
+        <td>작성일시</td><td>{{write_time}}</td>
+    </tr>
+    <tr>
+        <td>조회수</td><td>{{view_count}}</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{content}}</td>
+    </tr>
+</table>
+</table>
+<table width="100%">
+<tr>
+    <td align="left">
+        <button class="btn btn-success" id="list">목록</button>
+    </td>
+    <td align="right">
+        <button class="btn btn-primary" id="update">수정</button>
+        <button class="btn btn-danger" id="delete">삭제</button>
+    </td>
+</tr>
+</table>
+</div>
+{% endblock %}

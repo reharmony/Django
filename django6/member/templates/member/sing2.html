@@ -1,0 +1,10 @@
+{% extends 'member/sing.html' %} <!-- base.html파일에서 확장(상속)시켜주기 -->
+{% load static %}
+{% block title %}오시는길{% endblock %}
+{% block menu %}
+    <a href="sing">회사소개</span> |</a>
+    <a href="sing1">회사제품 |</a>
+    <a href="sing2"><span style="background-color:yellow">오시는길 |</a>
+    <a href="sing3">문의게시판</a>
+{% endblock %}
+<img {% block img %} src="{% static 'member/images/map.jpg' %}" {% endblock %}>

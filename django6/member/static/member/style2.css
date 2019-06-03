@@ -1,0 +1,30 @@
+a {
+    text-decoration : none;
+    color : green;
+}
+
+a:visited {
+    text-decoration : none;
+    color : green;
+}
+
+ul {
+    display : table;
+    width : 120px;
+    margin-left : auto;
+    margin-right : auto;
+}
+
+#board {
+    text-align : center;
+}
+
+.title_href {
+    text-decoration : none;
+    color : black;
+}
+
+.title_href:visited {
+    text-decoration : none;
+    color : black;
+}
