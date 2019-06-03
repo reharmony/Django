@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+     href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+     crossorigin="anonymous"> <!-- 부트스트랩 css -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+     crossorigin="anonymous"></script> <!-- 제이쿼리 -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+     crossorigin="anonymous"></script> <!-- 에이젝스 -->
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script> <!-- 부트스트랩 js -->
+    <title>Dstagram {% block title %}{% endblock %}</title>
+    {% load static %}
+</head>
+<body>
+<div class="container">
+    <!-- 상단 네이게이션 메뉴바 -->
+    <header class="header clearfix">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a href="/" class="navbar-brand">Dstagram</a> <!-- 브랜드 명 -->
+            <ul class="nav">
+
+                <li class="nav-item active"> <!-- 홈으로 가기 -->
+                    <a href="/" class="nav-link bg-info border border-{% block menu1 %}white{% endblock %}" style="color:white;">HOME</a>
+                </li>
+                {% if user.is_authenticated %} <!-- 로그인여부 확인 -->
+                <li class="nav-item"> <!-- 사진 업로드 버튼 -->
+                    <a href="{% url 'photo:photo_upload' %}" class="nav-link bg-info border border-{% block menu2 %}info{% endblock %}" style="color:white;">사진올리기</a>
+                </li>
+                <li class="nav-item"> <!-- 로그인한 사용자 환영 문구 -->
+                    <a href="#" class="nav-link" style="color:#e1e6ef;">{{user.get_username}}님</a> <!-- 이름 불러오기 -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bg-info" href="{% url 'account_logout' %}" style="color:white;">로그아웃</a>
+                </li>
+                {% else %}
+                <li>
+                    <a class="nav-link" href="{% url 'account_login' %}" style="color:white;">로그인</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 우리가 넣고 싶은 내용 -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- 하단 메뉴 -->
+    <footer>
+        <hr color="red" width="100%">
+        <p align="center">ⓒ 2019 Copyright KGITBANK™</p>
+    </footer>
+</div>
+</body>
+</html>

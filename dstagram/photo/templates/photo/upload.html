@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} - List {% endblock %}
+{% block menu1 %}info{% endblock %}
+{% block menu2 %}white{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-2"><br></div>
+    <div class="col-md-8 panel panel-default jumbotron">
+        <form action="" method="post" enctype="multipart/form-data"> <!-- 텍스트 말고도 다양한 파일 형태 -->
+            {{form.as_p}}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="올리기">
+        </form>
+    </div>
+</div>
+{% endblock %}
