@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상세 페이지</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'member/style.css' %}">
+    <script src="{% static 'member/jquery-3.4.1.min.js' %}"></script> <!-- 제이쿼리 import-->
+</head>
+<body>
+<hr color="red" width="500" align="left">
+<h3>신규 가입 회원 정보</h3>
+<p class="p1">이름: {{post.name}}</p><br>
+<p class="p2">전화번호: {{post.tel}}</p><br>
+<p class="p3">주소: {{post.addr}}</p><br>
+<hr color="blue" width="500" align="left">
+<h3>전체 회원 정보</h3>
+<table width="500" id='total' border="1" >
+        <tr id="head">
+            <td>
+                번호
+            </td>
+            <td>
+                이름
+            </td>
+            <td>
+                전화번호
+            </td>
+            <td>
+                주소
+            </td>
+        </tr>
+        {% for x in member_list %}
+            <tr>
+                <td>
+                    {{x.id}}
+                </td>
+                <td>
+                    {{x.name}}
+                </td>
+                <td>
+                    {{x.tel}}
+                </td>
+                <td>
+                    {{x.addr}}
+                </td>
+            </tr>
+        {% endfor %}
+</table>
+</body>
+</html>

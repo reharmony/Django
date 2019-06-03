@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>결과를 담아줄 페이지</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'member/style.css' %}"
+</head>
+<body>
+{{quiz_list}}
+<hr color="red">
+<ul>
+    {% for question in quiz_list %}
+        <li>{{question}}</li>
+    {% endfor %}
+</ul>
+<hr color="red">
+<ul>
+    {% for question in quiz_list %}
+    <!-- a 태그: 클라이언트가 요청하도록 명령하는 태그 -> 브라우저가 요청함 -->
+    <li><a href='/member/quiz/{{question.id}}'>{{question.question_text}}</a></li>
+    {% endfor %}
+</ul>
+<div>
+    <table width="500" id='total' border="1" >
+        <tr id="head">
+            <td>
+                번호
+            </td>
+            <td>
+                질문내용
+            </td>
+            <td>
+                날짜
+            </td>
+        </tr>
+        {% for x in quiz_list %}
+            <tr>
+                <td>
+                    {{x.id}}
+                </td>
+                <td>
+                    {{x.question_text}}
+                </td>
+                <td>
+                    {{x.pub_date}}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

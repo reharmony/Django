@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상세 페이지</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'member/style.css' %}">
+    <script src="{% static 'member/jquery-3.4.1.min.js' %}"></script> <!-- 제이쿼리 import-->
+<body>
+<h1>회원가입</h1>
+<hr color="red" width="300" align="left">
+<div>
+    <table>
+        <form action="list" method="post" id="join">
+            {% csrf_token %}
+            <tr>
+                <td>이름</td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td>전화번호</td>
+                <td><input type="text" name="tel" id="tel"></td>
+            </tr>
+            <tr>
+                <td>주소</td>
+                <td><input type="text" name="addr" id="addr"></td>
+            </tr>
+            <tr align="right">
+                <td colspan="2"><input type="submit" value="가입" id="enter"></td>
+            </tr>
+        </form>
+    </table>
+</div>
+
+</body>
+</html>

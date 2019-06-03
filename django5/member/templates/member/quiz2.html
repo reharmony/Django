@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상세 페이지</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'member/style.css' %}">
+</head>
+<body>
+아이디: <p class="p1">{{id}}</p><br>
+날짜: <p class="p2">{{pub_date}}</p><br>
+질문제목: <p class="p3">{{question_text}}</p><br>
+<hr color="red">
+
+</body>
+</html>
