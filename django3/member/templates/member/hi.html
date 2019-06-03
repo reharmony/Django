@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title> <!-- {{: views에서 딕셔너리 값 받아옴 -->
+    {% load static %} <!-- static기능 import하기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'member/style.css' %}"> <!-- css import -->
+    <script src="{% static 'member/jquery-3.4.1.min.js' %}"></script> <!-- 제이쿼리 import-->
+    <script>
+        $(function(){
+            alert("제이쿼리 실행");
+        });
+    </script>
+</head>
+<body>
+<!-- {% : 템플릿언어, html에 python문법을 삽입하는 부호 (모든 문법이 가능한건 아님, 제어문 위주로 가능) -->
+<img src="{% static 'member/images/1.jpg' %}" width="200"><br>
+서버의 처리 결과를 담을 페이지입니다.
+
+<p class="p1">이름: {{name}}</p>
+<p class="p2">나이: {{age}}</p>
+</body>
+</html>
