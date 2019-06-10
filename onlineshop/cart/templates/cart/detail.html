@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Shopping Cart{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead align="center">
+    <tr>
+        <th scope="col" width="15%">이미지</th>
+        <th scope="col">제품명</th>
+        <th scope="col">제품개수</th>
+        <th scope="col" width="15%">제거하기</th>
+        <th scope="col" width="20%">개당 가격</th>
+        <th scope="col" width="20%">제품 총 가격</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in cart %}
+    {% with product=item.product %}
+    <tr>
+        <th scope="row">
+            <a href="{{product.get_absolute_url}}">
+                <img src="{{product.image.url}}" class="img-thumbnail">
+            </a>
+        </th>
+        <td>{{product.name}}</td>
+        <td>
+            <form action="{% url 'cart:product_add' product.id %}" method="post">
+                {{item.quantity_form.quantity}}
+                {{item.quantity_form.is_update}}
+                {% csrf_token %}
+                <input type="submit" class="btn btn-primary" value="수정">
+            </form>
+        </td>
+        <td>Remove</td>
+        <td class="num" align="right">{{ item.price }}원</td>
+        <td class="num" align="right">{{ item.total_price }}원</td>
+    </tr>
+    {% endwith %}
+    {% endfor %}
+    <tr class="total">
+        <td colspan="2"></td>
+        <td colspan="2" align="right">총 결제금액</td>
+        <td colspan="2" class="num" align="right">{{ cart.get_total_price|floatformat:"2" }}원</td>
+    </tr>
+    </tbody>
+</table>
+<p class="text-right">
+    <a href='{% url "shop:product_all" %}' class="btn btn-secondary">계속 쇼핑하기</a>
+</p>
+{% endblock %}

@@ -1,0 +1,30 @@
+from django.shortcuts import render, get_object_or_404, redirect
+
+# Create your views here.
+from django.views.decorators.http import require_POST
+from cart.forms import AddProductForm
+from .cart import *
+
+@require_POST # POST형식인지 체크해줌 (@: JAVA-annotation, Python-decorator)
+def add(request, product_id):
+    cart = Cart(request) # cart.py의 Cart클래스 복사
+    product = get_object_or_404(Product, id=product_id)
+    # 유효한 값이 들어가 있는지 체크
+    # input에 들어간 values를 가지고 옴
+    form = AddProductForm(request.POST)
+    if form.is_valid():
+        cd = form.cleaned_data
+    print('-----', cd['quantity'])
+    cart.add(product = product, quantity = cd['quantity'], is_update = cd['is_update'])
+    return redirect('cart:detail') # cart.py의 detail함수를 호출하는 것
+
+def remove(request):
+    pass
+
+def detail(request):
+    cart = Cart(request)
+    for product in cart:
+        product['quantity_form'] = AddProductForm(initial={'quantity':product['quantity'], 'is_update':True})
+    return render(request, 'cart/detail.html', {'cart':cart})
+
+

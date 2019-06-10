@@ -1,0 +1,83 @@
+from decimal import Decimal
+
+from django.conf import settings
+
+from shop.models import Product
+
+
+class Cart(object):
+
+    # 장바구니 초기화
+    def __init__(self, request):
+        self.session = request.session # session은 내장함수 사용, cookie는 직접 코딩 필요
+
+        # CARD_ID 라는 key를 가진 세션이 있는지 체크
+        cart = self.session.get(settings.CART_ID)
+        login = self.session.get(settings.LOGIN_SESSION_ID)
+        start = self.session.get(settings.START)
+        print('start: ', start)
+        print('start-value: ', settings.START + 1)
+        print('login-id: ', settings.LOGIN_SESSION_ID)
+        self.session['login_id'] = settings.LOGIN_SESSION_ID
+
+        # 세션이 없으면, 딕셔너리를 만들어주어야 함
+        if not cart: # 없으면
+            cart = self.session[settings.CART_ID] = {} # 빈 딕셔너리 만들어주기
+
+        # 세션이 있으면, 딕셔너리를 가지고 옴
+        self.cart = cart
+
+
+    # 총 개수를 계산해주는 함수
+    def __len__(self):
+        return sum(item['quantity'] for item in self.cart.values())
+
+
+    # 가격을 계산해주는 함수
+    def __iter__(self):
+        product_ids = self.cart.keys()
+        products = Product.objects.filter(id__in=product_ids)
+
+        for product in products:
+            self.cart[str(product.id)]['product'] = product
+
+        for item in self.cart.values():
+            item['price'] = Decimal(item['price'])
+            item['total_price'] = item['price'] * item['quantity']
+
+            yield item # return과 같은 역할, 사라지지 않고 값을 계속 가지고 있음
+
+
+
+
+    # 처리결과를 세션에 저장하는 함수
+    def save(self):
+        self.session[settings.CART_ID] = self.cart  # 세션에 저장
+        self.session.modified = True  # 세션 값 수정가능 여부 True로 설정
+
+    # 장바구니에 상품 추가
+    def add(self, product, quantity=1, is_update = False): # 상품, 개수(기본값1), 업데이트여부(처음들어온 값이면 False)
+        product_id = str(product.id)
+        if product_id not in self.cart : # product_id 값이 cart에 없으면 (새로 추가하는 거라면) 초기화
+            self.cart[product_id] = {'quantity':0, 'price':str(product.price)}
+        if is_update: # 수정하는 거라면
+            self.cart[product_id]['quantity'] = quantity
+        else: # 새로 추가하는 거라면
+            self.cart[product_id]['quantity'] += quantity
+        self.save() # 처리결과를 세션에 반영
+
+
+
+    # 장바구니에 있는 상품 하나씩 삭제
+    def remove(self, product_id):
+        product_id = str(product_id)
+        if product_id in self.cart: # cart에 product_id가 존재하면
+            del(self.cart[product_id])
+            self.save() # 처리결과를 세션에 반영
+
+
+    # 장바구니에 있는 상품 전체 삭제
+    def clear(self):
+        self.session[settings.CART_ID] = {} # 세션값을 빈 딕셔너리로 초기화
+        self.session.modified = True  # 세션 값 수정가능 여부 True로 설정
+
