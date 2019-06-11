@@ -96,9 +96,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # DB엔진 종류
         'NAME': 'onlineshop', # DB명
-        'USER':'onlineshop', # DB관리자 계정명
-        'PASSWORD':'1q2w3e4r', # DB관리자 비밀번호
-        'HOST': 'onlineshop.ccru8mziyuew.ap-northeast-2.rds.amazonaws.com', # DB IP주소
+        'USER':'', # DB관리자 계정명
+        'PASSWORD':'', # DB관리자 비밀번호
+        'HOST': '', # DB IP주소
         'PORT':'3306', # 포트
         'OPTIONS' : {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO'",
