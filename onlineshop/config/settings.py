@@ -143,8 +143,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'AKIA4IRDAAUDF7D5KMQ2' #'your-key'
-AWS_SECRET_ACCESS_KEY = 'yTvPhsJWTcun1c6XenyEfNDf+l+WlXPxIBZAG3Bi' #'your-secret-key'
+AWS_ACCESS_KEY_ID = '' #'your-key'
+AWS_SECRET_ACCESS_KEY = '' #'your-secret-key'
 AWS_REGION = 'Asia Pacific (Seoul)'
 AWS_STORAGE_BUCKET_NAME = 'django-onlineshop-jin' # 'your-bucket-name'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME) # AWS 홈페이지의 가이드에 나와 있는 주소형식이 잘못설명되어있음 주의
